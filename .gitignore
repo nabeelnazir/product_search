@@ -18,3 +18,4 @@
 
 .byebug_history
 /solr
+puma.rb

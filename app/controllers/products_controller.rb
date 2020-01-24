@@ -9,7 +9,7 @@ class ProductsController < ApplicationController
       with :price, params[:price] if params[:price].present? && params[:price_type]&.eql?("Equal To")
       with(:price).less_than(params[:price].to_i) if params[:price].present? && params[:price_type]&.eql?("Less Than")
       with(:price).greater_than(params[:price].to_i) if params[:price].present? && params[:price_type]&.eql?("Greater Than")
-      # order_by :created_at, :desc if params[:sort_order]&.eql?("Newest")
+      order_by :created_at, :desc if params[:sort_order]&.eql?("Newest")
       order_by :price, :asc if params[:sort_order]&.eql?("Lowest Price")
       order_by :price, :desc if params[:sort_order]&.eql?("Highest Price")
       paginate(:page => params[:page], :per_page => params[:per_page] || 5)
