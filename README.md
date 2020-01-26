@@ -19,4 +19,4 @@ Following are the features of this project:
 
 **Working demo of the project: https://drive.google.com/file/d/18qakFiMtgrBst_CXojoPfwcH4wZr8p_F/view**
 
-![Alt Text](https://drive.google.com/file/d/1XyCaREt9FjX5LxlvBtbm8VplDweDbatf/view?usp=sharing)
+![Alt Text](https://res.cloudinary.com/dao3qkzzg/image/upload/v1580047162/produt_search_demo_akklhs.gif)
