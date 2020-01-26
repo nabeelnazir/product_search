@@ -4,4 +4,5 @@ class Product < ApplicationRecord
         date :created_at
         integer :price
     end
+    validates :title, :description, :country, :tags, :price, presence: true
 end
