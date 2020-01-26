@@ -1,39 +1,27 @@
-<div style="text-align: center">
-    <%= form_tag(@products_path, :method => "get", id: "search-form") do %>
-    <%= text_field_tag :search, params[:search], placeholder: 'Product Title or Description' %>
-    </br></br>
-    <%= text_field_tag :country, params[:country], placeholder: 'Country' %>
-    </br></br>
-    <%= text_field_tag :price, params[:price], placeholder: 'Price', style: "width: 5%" %>
-    <%# <%= text_field_tag :price_type, params[:price_type] %>
-    <%= select_tag "price_type", options_for_select([ "Equal To", "Less Than", "Greater Than"], params[:price_type] || "Equal To") %>
-    </br></br>
-    Sort By: <%= select_tag "sort_order", options_for_select([ "Relevance", "Newest", "Lowest Price",
-"Highest Price" ], params[:sort_order] || "Newest") %>
-    </br></br>
-    <%= submit_tag 'Search', name: nil %>
-<% end %>
+<div class="row">
+<div class="col-12">
+    <h1 class="text-center">Products</h1>
+  </div>
 </div>
-
-<br>
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Description</th>
-    <th>Country</th>
-    <th>Tags</th>
-    <th>Price</th>
-  </tr>
-  <% @products.each do |product| %>
-    <tr>
-        <td><%= product.title %></td>
-        <td><%= product.description %></td>
-        <td><%= product.country %></td>
-        <td><%= product.tags %></td>
-        <td><%= '$'+product.price.to_s %></td>
-    </tr>    
-  <% end %>
-</table>
-<div style="text-align: center">
-    <%= will_paginate @products %>
+<div class="row">
+  <div class="col-3">
+    <%= render 'shared/product_search_form' %>
+  </div>
+  <div class="col-9">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">Title</th>
+          <th scope="col">Description</th>
+          <th scope="col">Country</th>
+          <th scope="col">Tags</th>
+          <th scope="col">Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render partial: "shared/product", collection: @products %>
+      </tbody>
+    </table>
+    <%= render partial: "shared/pagination", locals: { list: @products } %>
+  </div>
 </div>

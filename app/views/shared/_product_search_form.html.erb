@@ -1,0 +1,26 @@
+<div class="bordered padding-10">
+  <h3 class="text-center">Search Products</h3>
+  <%= form_tag(@products_path, :method => "get", id: "search-form") do %>
+    <div class="form-group">
+      <%= text_field_tag :search, params[:search], placeholder: 'Product Title or Description', class:"form-control" %>
+    </div>
+    <div class="form-group">
+      <%= text_field_tag :country, params[:country], placeholder: 'Country', class:"form-control" %>
+    </div>
+    <div class="form-group">
+      <%= text_field_tag :price, params[:price], placeholder: 'Price', class:"form-control w-50 float-left" %>
+    </div>
+    <div class="form-group">
+      <%= select_tag "price_type", options_for_select([ "Equal To", "Less Than", "Greater Than"], params[:price_type] || "Equal To"), class:"form-control w-50" %>
+    </div>
+    <div class="form-group">
+      <label for="sortBy">Sort By:</label>
+      <%= select_tag "sort_order", options_for_select([ "Relevance", "Newest", "Lowest Price",
+    "Highest Price" ], params[:sort_order] || "Newest"), class:"form-control" %>
+    </div>
+    <div class="text-center">
+      <%= submit_tag 'Search', name: nil, class: "btn btn-primary" %>
+      <a href="/" class="btn btn-danger" role="button">Clear Search</a>
+    </div>
+  <% end %>
+</div>
