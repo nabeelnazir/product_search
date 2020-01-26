@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
       search = Sunspot.search(Product) do
         fulltext search_params[:search] do
           fields(:description, :country, :tags, :title)
-          fields(:description, :country, :tags, :title => 2.0) if sort_order("Relevance")
+          fields(:description, :country, :tags, :title => 2.0) if sort_order("Relevance") #it will boost the title by 2X
         end
         with :country, search_params[:country] if country?
         with :price, search_params[:price] if price_and_price_type("Equal To")
