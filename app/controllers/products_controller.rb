@@ -20,4 +20,13 @@ class ProductsController < ApplicationController
       format.json { render json: @products }
     end
   end
+
+  def show
+    @product = Product.find_by_id(params[:id])
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+
 end
