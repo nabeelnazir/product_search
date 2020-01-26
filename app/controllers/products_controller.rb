@@ -15,5 +15,9 @@ class ProductsController < ApplicationController
       paginate(:page => params[:page], :per_page => params[:per_page] || 5)
     end
     @products = search.results
+    respond_to do |format|
+      format.html
+      format.json { render json: @products }
+    end
   end
 end
